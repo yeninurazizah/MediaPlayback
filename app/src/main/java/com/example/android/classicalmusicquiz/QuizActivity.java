@@ -27,12 +27,12 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.media.session.MediaButtonReceiver;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -207,7 +207,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
             icon = R.drawable.exo_controls_pause;
             play_pause = getString(R.string.pause);
         } else {
-            icon = R.drawable.exo_controls_pause;
+            icon = R.drawable.exo_controls_play;
             play_pause = getString(R.string.play);
         }
 
@@ -216,7 +216,6 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 icon, play_pause,
                 MediaButtonReceiver.buildMediaButtonPendingIntent(this,
                         PlaybackStateCompat.ACTION_PLAY_PAUSE));
-
 
         NotificationCompat.Action restartAction = new android.support.v4.app.NotificationCompat
                 .Action(R.drawable.exo_controls_previous, getString(R.string.restart),
@@ -236,6 +235,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 .setStyle(new NotificationCompat.MediaStyle()
                         .setMediaSession(mMediaSession.getSessionToken())
                         .setShowActionsInCompactView(0, 1));
+
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotificationManager.notify(0, builder.build());
